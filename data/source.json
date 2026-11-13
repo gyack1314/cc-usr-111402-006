@@ -1,0 +1,37 @@
+{
+  "memory": 100,
+  "disk": 200,
+  "tenants": {
+    "ops": 2,
+    "audit": 1
+  },
+  "operators": [
+    {
+      "id": "o1",
+      "query": "q1",
+      "tenant": "ops",
+      "min_resident": 30,
+      "desired": 80,
+      "spillable": true,
+      "disk_per_byte": 2
+    },
+    {
+      "id": "o2",
+      "query": "q2",
+      "tenant": "audit",
+      "min_resident": 40,
+      "desired": 70,
+      "spillable": false,
+      "disk_per_byte": 0
+    },
+    {
+      "id": "o3",
+      "query": "q3",
+      "tenant": "ops",
+      "min_resident": 10,
+      "desired": 20,
+      "spillable": true,
+      "disk_per_byte": 1
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+# 资料及接口契约
+
+算子声明min_resident、desired、spillable、disk_per_byte及dependency阶段；min_resident不可回收。资源事件为request/grant/revoke_requested/release/finish/cancel，revoke_requested不改变实际占用，只有release才归还。逻辑tick驱动就绪与超时；租户权重为正整数。同一任务内依赖图无环，后续阶段可以等待前一阶段释放。等待上界和权重公平窗口由实现给出并冻结在配置，达到边界可拒绝新任务或终止可取消任务，不得伪报已完成。resources.py已有分配账与算子溢写回执，没有任务级调度器。
+
+所有记录为合成仓资料；data/source.json保存原始字段和身份。storage.py负责摘要读取，table.py保存独立关系版本，relations.py保留SQL三值和袋语义。inspect只调用现有基础接口，不提供新增查询或管理能力。
